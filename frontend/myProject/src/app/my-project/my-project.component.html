@@ -1,0 +1,33 @@
+<h1>My Project</h1>
+
+
+<div class="container">
+
+    <div class="alert alert-warning" *ngIf="myProjectForm.dirty && myProjectForm.invalid">Enter valid values with
+        minimum 5 characters!</div>
+    <div class="alert alert-warning" *ngIf="myProjectForm.dirty && targetDate.invalid">Enter valid Target Date values!
+    </div>
+    <div class="alert alert-warning" *ngIf="myProjectForm.dirty && description.invalid">Enter at least 5 characters in
+        Description!
+    </div>
+
+
+    <form (ngSubmit)="!myProjectForm.invalid && saveMyProject()" #myProjectForm="ngForm">
+        <fieldset class="form-group">
+            <label>Description</label>
+            <input type="text" #description="ngModel" [(ngModel)]="myProject.description" class="form-control"
+                name="description" required="required" minlength="5">
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>Target Date</label>
+            <input type="date" #targetDate="ngModel" [ngModel]="myProject.targetDate | date:'yyyy-MM-dd'"
+                (ngModelChange)="myProject.targetDate = $event" class="form-control" name="targetDate"
+                required="required">
+        </fieldset>
+
+        <button type="submit" class="btn btn-success">Save</button>
+    </form>
+</div>
+
+<!-- -->

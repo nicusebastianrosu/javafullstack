@@ -1,0 +1,34 @@
+<h1>My Project's</h1>
+
+<div class="alert alert-success" *ngIf="message">{{message}}</div>
+
+<div class=container>
+    <table class="table">
+        <!-- <caption><b>My Project's</b></caption> -->
+        <thead>
+            <tr>
+
+                <th>Description</th>
+                <th>Target Date</th>
+                <th>is Completed?</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let myProject of myProjects">
+
+                <td>{{myProject.description}}</td>
+                <td>{{myProject.targetDate | date | uppercase}}</td>
+                <td>{{myProject.done}}</td>
+                <td><button (click)="updateMyProject(myProject.id)" class="btn btn-success">Update</button></td>
+                <td><button (click)="deleteMyProject(myProject.id)" class="btn btn-warning">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <td><button (click)="addMyProject()" class="btn btn-success">Add Project</button></td>
+    </div>
+</div>
+
+<!--myProject.id-->
